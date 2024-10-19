@@ -14,8 +14,8 @@ I improved the code iteratively, incorporating multithreading, dynamic learning 
 
 ## Initialization 
 ```C++
-    import_everything();
-    
+	import_everything();
+
 	set_current_loss(1);
 	lowest_loss = loss;
 	loss_table[0].first = loss;
@@ -32,7 +32,7 @@ Since the training loop uses a dynamic step size it first has to be set for all 
 
 ## Training Loop
 ```C++
-    for (int i = 1; i <=100*1000; i++)
+	for (int i = 1; i <=100*1000; i++)
 	{
 		epoch();
 		loss_table[i].first = loss;
@@ -50,11 +50,11 @@ Since the training loop uses a dynamic step size it first has to be set for all 
 ## The rest
 I will not be documenting the rest of the code, but will instead just post my favourite part ```#Manualbackpropagation```
 ```C++
-for (int i = 1; i <= n; i++)
-		{
-			for (int j = 1; j <= n; j++) neurons[index][lay][i].grad += wei[lay][i][j].val * neurons[index][lay + 1][j].grad;
-			ld tangrad = 1 - neurons[index][lay][i].output * neurons[index][lay][i].output;
-			neurons[index][lay][i].grad *= tangrad;
-			bias[lay][i].sum += neurons[index][lay][i].grad;
-		}
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= n; j++) neurons[index][lay][i].grad += wei[lay][i][j].val * neurons[index][lay + 1][j].grad;
+		ld tangrad = 1 - neurons[index][lay][i].output * neurons[index][lay][i].output;
+		neurons[index][lay][i].grad *= tangrad;
+		bias[lay][i].sum += neurons[index][lay][i].grad;
+	}
 ```
