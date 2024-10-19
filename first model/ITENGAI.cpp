@@ -520,7 +520,6 @@ void set_step_size(ld step_size)
 int main()
 {
 	import_everything();
-	cout << "SIUUUUUUUUUU\n";
 	set_current_loss(1);
 	lowest_loss = loss;
 	cout << "epoch 0  ";
