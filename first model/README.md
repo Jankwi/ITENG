@@ -1,10 +1,10 @@
 # The first model (C++)
 
-Here it is - the first Neural Network I've ever built
-I wrote it in high school in the language which I knew the best -  ```C++```
+Here it is - the first Neural Network I've ever built  
+I wrote it in high school in the language which I knew the best -  ```C++```  
 The code is an iteratively improved mess, and should not be treated as a sample of my coding style
 
-I will not document the code thoroughly, but I will try to give a quick overviwe of how it works
+I will not document the code thoroughly, but I will try to give a quick overview of how it works
 
 ## Abstract
 The model is a simple neural network, stored as a computational graph using custom ```C++``` structs. Everything is implemented from scratch - including the forward and backward pass.
