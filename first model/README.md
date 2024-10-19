@@ -1,16 +1,15 @@
 # The first model (C++)
 
-Here it is - the first Neural Network I've ever built  
-I wrote it in high school in the language which I knew the best -  ```C++```  
-The code is an iteratively improved mess, and should not be treated as a sample of my coding style
+This is the first Neural Network I've ever built. I did it in the language which I knew the best -  ```C++```  
 
-I will not document the code thoroughly, but I will try to give a quick overview of how it works
+**Disclaimer: The code is an iteratively improved mess I created in high school, and should not be treated as a sample of my coding style**
 
 ## Abstract
 The model is a simple neural network, stored as a computational graph using custom ```C++``` structs. Everything is implemented from scratch - including the forward and backward pass.
 The parameters are stored as floats in ```weights.txt``` and ```biases.txt```.
 
-I improved the code iteratively, incorporating multithreading, dynamic learning rate, and other complex techinques. Despite all that the model achieves a mere 65% accuracy on the testing set, and should be treated as a museum exhibit.
+I improved the code iteratively, incorporating multithreading, dynamic learning rate, and other complex techinques. Despite all that the model achieves a mere 65% accuracy on the testing set, and should be treated as a museum exhibit.  
+I will not document the code thoroughly, but I will try to give a quick overview of how it works
 
 ## Initialization 
 ```C++
@@ -50,11 +49,25 @@ for (int i = 1; i <=100*1000; i++)
 ## The rest
 I will not be documenting the rest of the code, but will instead just post my favourite part ```#Manualbackpropagation```
 ```C++
-for (int i = 1; i <= n; i++)
+void backward_pass(int index)
 {
-	for (int j = 1; j <= n; j++) neurons[index][lay][i].grad += wei[lay][i][j].val * neurons[index][lay + 1][j].grad;
-	ld tangrad = 1 - neurons[index][lay][i].output * neurons[index][lay][i].output;
-	neurons[index][lay][i].grad *= tangrad;
-	bias[lay][i].sum += neurons[index][lay][i].grad;
-}
+	ld tangradout = 1 - neurons[index][l+1][1].output * neurons[index][l+1][1].output;
+	neurons[index][l + 1][1].grad = 2 * (neurons[index][l+1][1].output - goal[index]);
+	neurons[index][l+1][1].grad *= tangradout;
+	bias[l+1][1].sum += neurons[index][l+1][1].grad;
+	for (int lay = l; lay >= 0; lay--)
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			for (int j = 1; j <= n; j++) weights[index][lay][i][j].grad = neurons[index][lay][i].output * neurons[index][lay + 1][j].grad;
+			for (int j = 1; j <=n; j++) wei[lay][i][j].sum += weights[index][lay][i][j].grad;
+		}
+		for (int i = 1; i <= n; i++)
+		{
+			for (int j = 1; j <= n; j++) neurons[index][lay][i].grad += wei[lay][i][j].val * neurons[index][lay + 1][j].grad;
+			ld tangrad = 1 - neurons[index][lay][i].output * neurons[index][lay][i].output;
+			neurons[index][lay][i].grad *= tangrad;
+			bias[lay][i].sum += neurons[index][lay][i].grad;
+		}
+	}
 ```
