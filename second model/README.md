@@ -1,12 +1,13 @@
 ## The second model (moving on to PyTorch)
 
-After my exploits in C++ didn't bring much success, I decided to move on to PyTorch.
-i started learning Python, and I created this model after a few days.
-Though the testing loss was simmilar to the C++ one, the scode got smaller, which was definietely the way forward.
+After my exploits in C++ didn't bring much success, I decided to move on to Python.
+I completed Andrew Ng's coursera course (in Numpy) and got to work in PyTorch.
+After a fairly short time the model fully memorizes the training set, and reaches a score of above 66% on the testing set.
+Therefore it achieves similar accuracy as the C++ model, but is much shorter in terms of code - surely the step in the right direction.
 
-## The model
+## The Model
 
-The model is a very simple 4-layer feed forward neural network, with PyTorch as an activation function (and a sigmoid as the final one). The weights are saved as torch tensors in the parameters dictionary - just like in Andrew Ng's Coursera Neural Networks course.
+The model is a very simple 3-layer feed forward neural network, with PyTorch as an activation function (and a sigmoid as the final one). The weights are saved as torch tensors in the parameters dictionary - just like in Andrew Ng's Coursera Neural Networks course. Following his advice I also implemented the Cross Entropy Loss function.
 
 ```python
 def iteration(X, Y, params, L, step_size, print_cost):
@@ -29,7 +30,7 @@ def iteration(X, Y, params, L, step_size, print_cost):
     return update_params(params, step_size)
 ```
 
-## The data
+## The Data
 The data is stored in a csv file, which represents the one hot encoding of every word. It is imported using pandas.
 ```python
 train_X = import_data("train_X.csv")
@@ -37,4 +38,3 @@ train_Y = import_data("train_Y.csv")
 test_X = import_data("test_X.csv")
 test_Y = import_data("test_Y.csv")
 ```
-
