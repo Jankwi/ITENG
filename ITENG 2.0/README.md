@@ -1,4 +1,4 @@
-## The second model (moving on to PyTorch)
+## ITENG 3.0 (moving on to PyTorch)
 
 After my exploits in C++ didn't bring much success, I decided to move on to Python.
 I completed Andrew Ng's coursera course (in Numpy) and got to work in PyTorch.

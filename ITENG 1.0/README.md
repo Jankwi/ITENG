@@ -1,4 +1,4 @@
-# The first model (C++)
+# ITENG 1.0 (C++)
 
 This is the first Neural Network I've ever built. I did it in the language which I knew the best -  ```C++```  
 
